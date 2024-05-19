@@ -13,11 +13,11 @@ let dy = -2;
 
 const brickRowCount = 5;
 const brickColumnCount = 10;
-const brickWidth = 75;
-const brickHeight = 20;
+const brickWidth = 105;
+const brickHeight = 30;
 const brickPadding = 10;
 const brickOffsetTop = 30;
-const brickOffsetLeft = 30;
+const brickOffsetLeft = 45;
 
 let bricks = [];
 for(let c = 0; c < brickColumnCount; c++) {
@@ -27,6 +27,7 @@ for(let c = 0; c < brickColumnCount; c++) {
     }
 }
 
+let score = 0; // Variable para la puntuación
 let rightPressed = false;
 let leftPressed = false;
 
@@ -59,10 +60,21 @@ function collisionDetection() {
                 if(x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                     dy = -dy;
                     b.status = 0;
+                    score++; // Incrementar la puntuación
+                    if(score == brickRowCount * brickColumnCount) {
+                        alert("You win, congratulations!");
+                        document.location.reload();
+                    }
                 }
             }
         }
     }
+}
+
+function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Score: " + score, 8, 20);
 }
 
 function drawBall() {
@@ -104,6 +116,7 @@ function draw() {
     drawBricks();
     drawBall();
     drawPaddle();
+    drawScore(); // Dibujar la puntuación
     collisionDetection();
 
     if(x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
@@ -116,6 +129,7 @@ function draw() {
             dy = -dy;
         }
         else {
+            alert("GAME OVER");
             document.location.reload();
         }
     }
@@ -133,3 +147,4 @@ function draw() {
 }
 
 draw();
+
