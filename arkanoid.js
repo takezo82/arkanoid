@@ -13,11 +13,11 @@ let dy = -2;
 
 const brickRowCount = 5;
 const brickColumnCount = 10;
-const brickWidth = 105;
+const brickWidth = 100; // Ajusta el ancho de los ladrillos
 const brickHeight = 30;
 const brickPadding = 10;
 const brickOffsetTop = 30;
-const brickOffsetLeft = 45;
+const brickOffsetLeft = (canvas.width - (brickColumnCount * (brickWidth + brickPadding) - brickPadding)) / 2; // Calcula el offset izquierdo
 
 let bricks = [];
 for(let c = 0; c < brickColumnCount; c++) {
