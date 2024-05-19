@@ -1,8 +1,8 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-// Ajustar el tamaño del canvas a las dimensiones de la pantalla del móvil
-canvas.width = window.innerWidth;
+// Ajustar el tamaño del canvas para modo vertical
+canvas.width = window.innerHeight * 0.75;
 canvas.height = window.innerHeight;
 
 const paddleHeight = 10;
@@ -16,12 +16,12 @@ let dx = 2;
 let dy = -2;
 
 const brickRowCount = 5;
-const brickColumnCount = 7;  // Ajustado para una pantalla más pequeña
-const brickWidth = (canvas.width / brickColumnCount) - 10;  // Ajustado para llenar el ancho del canvas
+const brickColumnCount = 5;  // Ajustado para pantalla vertical
+const brickWidth = (canvas.width / brickColumnCount) - 10;
 const brickHeight = 30;
 const brickPadding = 10;
-const brickOffsetTop = 30;
-const brickOffsetLeft = 5;  // Pequeño margen en los lados
+const brickOffsetTop = 100;  // Mayor separación entre la barra y los bloques
+const brickOffsetLeft = 5;
 
 let bricks = [];
 for (let c = 0; c < brickColumnCount; c++) {
