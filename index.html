@@ -13,12 +13,39 @@
             height: 100vh;
             background: #000;
         }
-        canvas {
-            background: #000;
+        canvas, #startScreen, #gameOverScreen {
+            display: none;
+        }
+        #startScreen, #gameOverScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
+    <div id="startScreen">
+        <h1>Start</h1>
+        <button onclick="startGame()">Iniciar Juego</button>
+    </div>
+    <div id="gameOverScreen">
+        <h1>Game Over</h1>
+        <p id="finalScore"></p>
+        <button onclick="restartGame()">Reiniciar Partida</button>
+    </div>
     <canvas id="gameCanvas"></canvas>
     <script src="arkanoid.js"></script>
 </body>
