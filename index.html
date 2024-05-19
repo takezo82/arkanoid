@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arkanoid</title>
+    <title>Arkanoid Mobile</title>
     <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #000;
+        }
         canvas {
             background: #000;
-            display: block;
-            margin: 0 auto;
         }
     </style>
 </head>
 <body>
-    <canvas id="gameCanvas" width="1024" height="768"></canvas>
+    <canvas id="gameCanvas"></canvas>
     <script src="arkanoid.js"></script>
 </body>
 </html>
