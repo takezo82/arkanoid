@@ -1,8 +1,15 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerHeight * 0.75;
-canvas.height = window.innerHeight;
+// Función para redimensionar el canvas
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    draw();
+}
+
+window.addEventListener('resize', resizeCanvas, false);
+resizeCanvas();
 
 const paddleHeight = 10;
 const paddleWidth = 100;
@@ -16,7 +23,7 @@ let dy = -2;
 
 const brickRowCount = 5;
 const brickColumnCount = 5;
-const brickWidth = (canvas.width / brickColumnCount) - 10;
+let brickWidth = (canvas.width / brickColumnCount) - 10;
 const brickHeight = 30;
 const brickPadding = 10;
 const brickOffsetTop = 50;
@@ -25,11 +32,15 @@ const brickOffsetLeft = 5;
 const colors = ["#FF5733", "#33FF57", "#3357FF", "#F1C40F", "#9B59B6"];
 
 let bricks = [];
-for (let c = 0; c < brickColumnCount; c++) {
-    bricks[c] = [];
-    for (let r = 0; r < brickRowCount; r++) {
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        bricks[c][r] = { x: 0, y: 0, status: 1, color: color };
+function initBricks() {
+    bricks = [];
+    brickWidth = (canvas.width / brickColumnCount) - 10;
+    for (let c = 0; c < brickColumnCount; c++) {
+        bricks[c] = [];
+        for (let r = 0; r < brickRowCount; r++) {
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            bricks[c][r] = { x: 0, y: 0, status: 1, color: color };
+        }
     }
 }
 
@@ -176,6 +187,7 @@ function startGame() {
     document.getElementById("startScreen").style.display = "none";
     document.getElementById("gameOverScreen").style.display = "none";
     canvas.style.display = "block";
+    initBricks();
     gameInterval = setInterval(draw, 10);
 }
 
