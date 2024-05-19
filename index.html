@@ -13,7 +13,7 @@
             height: 100vh;
             background: #000;
         }
-        canvas, #startScreen, #gameOverScreen {
+        canvas {
             display: none;
         }
         #startScreen, #gameOverScreen {
@@ -28,6 +28,9 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+        }
+        #gameOverScreen {
+            display: none;
         }
         button {
             padding: 10px 20px;
@@ -50,3 +53,4 @@
     <script src="arkanoid.js"></script>
 </body>
 </html>
+
