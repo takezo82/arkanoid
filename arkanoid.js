@@ -1,6 +1,10 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
+// Ajustar el tamaño del canvas a las dimensiones de la pantalla del móvil
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 const paddleHeight = 10;
 const paddleWidth = 100;
 let paddleX = (canvas.width - paddleWidth) / 2;
@@ -12,12 +16,12 @@ let dx = 2;
 let dy = -2;
 
 const brickRowCount = 5;
-const brickColumnCount = 10;
-const brickWidth = 90; // Ajusta el ancho de los ladrillos
+const brickColumnCount = 7;  // Ajustado para una pantalla más pequeña
+const brickWidth = (canvas.width / brickColumnCount) - 10;  // Ajustado para llenar el ancho del canvas
 const brickHeight = 30;
 const brickPadding = 10;
 const brickOffsetTop = 30;
-const brickOffsetLeft = (canvas.width - (brickColumnCount * (brickWidth + brickPadding) - brickPadding)) / 2;
+const brickOffsetLeft = 5;  // Pequeño margen en los lados
 
 let bricks = [];
 for (let c = 0; c < brickColumnCount; c++) {
@@ -27,12 +31,14 @@ for (let c = 0; c < brickColumnCount; c++) {
     }
 }
 
-let score = 0; // Variable para la puntuación
+let score = 0;
 let rightPressed = false;
 let leftPressed = false;
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("touchstart", touchStartHandler, false);
+document.addEventListener("touchmove", touchMoveHandler, false);
 
 function keyDownHandler(e) {
     if (e.key == "Right" || e.key == "ArrowRight") {
@@ -52,6 +58,28 @@ function keyUpHandler(e) {
     }
 }
 
+function touchStartHandler(e) {
+    const touchX = e.touches[0].clientX;
+    if (touchX > canvas.width / 2) {
+        rightPressed = true;
+        leftPressed = false;
+    } else {
+        leftPressed = true;
+        rightPressed = false;
+    }
+}
+
+function touchMoveHandler(e) {
+    const touchX = e.touches[0].clientX;
+    if (touchX > canvas.width / 2) {
+        rightPressed = true;
+        leftPressed = false;
+    } else {
+        leftPressed = true;
+        rightPressed = false;
+    }
+}
+
 function collisionDetection() {
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
@@ -60,7 +88,7 @@ function collisionDetection() {
                 if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                     dy = -dy;
                     b.status = 0;
-                    score++; // Incrementar la puntuación
+                    score++;
                     if (score == brickRowCount * brickColumnCount) {
                         alert("You win, congratulations!");
                         document.location.reload();
@@ -116,7 +144,7 @@ function draw() {
     drawBricks();
     drawBall();
     drawPaddle();
-    drawScore(); // Dibujar la puntuación
+    drawScore();
     collisionDetection();
 
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
