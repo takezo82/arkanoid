@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerHeight * 0.75;
 canvas.height = window.innerHeight;
 
-const paddleHeight = 50;  // Ajusta el tamaño según la imagen
+const paddleHeight = 10;
 const paddleWidth = 100;
 let paddleX = (canvas.width - paddleWidth) / 2;
 
@@ -37,9 +37,6 @@ let score = 0;
 let rightPressed = false;
 let leftPressed = false;
 let gameInterval;
-
-const paddleImage = new Image();
-paddleImage.src = '/mnt/data/daniark.png';
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -119,7 +116,11 @@ function drawBall() {
 }
 
 function drawPaddle() {
-    ctx.drawImage(paddleImage, paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
 }
 
 function drawBricks() {
@@ -173,6 +174,7 @@ function draw() {
 
 function startGame() {
     document.getElementById("startScreen").style.display = "none";
+    document.getElementById("gameOverScreen").style.display = "none";
     canvas.style.display = "block";
     gameInterval = setInterval(draw, 10);
 }
