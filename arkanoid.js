@@ -1,32 +1,31 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-// Función para redimensionar el canvas
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    draw();
+    draw(); // Redibujar los elementos para adaptarse al nuevo tamaño
 }
 
 window.addEventListener('resize', resizeCanvas, false);
 resizeCanvas();
 
 const paddleHeight = 10;
-const paddleWidth = 100;
+let paddleWidth = canvas.width * 0.15; // Ajuste proporcional de la barra
 let paddleX = (canvas.width - paddleWidth) / 2;
 
-const ballRadius = 10;
+const ballRadius = canvas.width * 0.02; // Ajuste proporcional de la pelota
 let x = canvas.width / 2;
 let y = canvas.height - 30;
 let dx = 2;
 let dy = -2;
 
 const brickRowCount = 5;
-const brickColumnCount = 5;
+const brickColumnCount = 7; // Ajuste para pantalla ancha
 let brickWidth = (canvas.width / brickColumnCount) - 10;
-const brickHeight = 30;
+const brickHeight = canvas.height * 0.05; // Ajuste proporcional de los ladrillos
 const brickPadding = 10;
-const brickOffsetTop = 50;
+const brickOffsetTop = canvas.height * 0.1; // Ajuste proporcional del offset superior
 const brickOffsetLeft = 5;
 
 const colors = ["#FF5733", "#33FF57", "#3357FF", "#F1C40F", "#9B59B6"];
