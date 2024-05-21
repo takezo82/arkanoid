@@ -129,4 +129,23 @@ function draw() {
         }
     }
 
+    if (rightPressed && paddleX < canvas.width - paddleWidth) {
+        paddleX += 7;
+    } else if (leftPressed && paddleX > 0) {
+        paddleX -= 7;
+    }
+
     x += dx;
+    y += dy;
+    requestAnimationFrame(draw);
+}
+
+document.getElementById('start-button').addEventListener('click', () => {
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('game-container').style.display = 'flex';
+    draw();
+});
+
+document.getElementById('restart-button').addEventListener('click', () => {
+    document.location.reload();
+});
