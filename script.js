@@ -8,8 +8,8 @@ let score = 0;
 let rightPressed = false;
 let leftPressed = false;
 
-const paddleHeight = 10;
-const paddleWidth = 75;
+const paddleHeight = 30; // Ajusta según la altura de la imagen
+const paddleWidth = 75; // Ajusta según el ancho de la imagen
 let paddleX = (canvas.width - paddleWidth) / 2;
 
 const ballRadius = 10;
@@ -33,6 +33,9 @@ for (let c = 0; c < brickColumnCount; c++) {
         bricks[c][r] = { x: 0, y: 0, status: 1 };
     }
 }
+
+const paddleImg = new Image();
+paddleImg.src = 'daniark.png'; // Asegúrate de que la imagen esté en el mismo directorio o cambia la ruta si es necesario
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -62,11 +65,7 @@ function drawBall() {
 }
 
 function drawPaddle() {
-    ctx.beginPath();
-    ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "#0095DD";
-    ctx.fill();
-    ctx.closePath();
+    ctx.drawImage(paddleImg, paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
 }
 
 function drawBricks() {
