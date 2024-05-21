@@ -8,8 +8,8 @@ let score = 0;
 let rightPressed = false;
 let leftPressed = false;
 
-const paddleHeight = 30; // Ajusta según la altura de la imagen
-const paddleWidth = 75; // Ajusta según el ancho de la imagen
+const paddleHeight = 60; // Aumenta este valor para hacer la barra más alta
+const paddleWidth = 150; // Aumenta este valor para hacer la barra más ancha
 let paddleX = (canvas.width - paddleWidth) / 2;
 
 const ballRadius = 10;
