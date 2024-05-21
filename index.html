@@ -1,56 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arkanoid Mobile</title>
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #000;
-            overflow: hidden;
-        }
-        canvas {
-            background: #000;
-        }
-        #startScreen, #gameOverScreen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        #gameOverScreen {
-            display: none;
-        }
-        button {
-            padding: 10px 20px;
-            margin-top: 20px;
-            font-size: 16px;
-        }
-    </style>
+    <title>Arkanoid</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="startScreen">
-        <h1>Start</h1>
-        <button onclick="startGame()">Iniciar Juego</button>
+    <div id="start-screen">
+        <button id="start-button">Start</button>
     </div>
-    <div id="gameOverScreen">
+    <div id="game-container" style="display: none;">
+        <canvas id="gameCanvas"></canvas>
+        <div id="score">Score: 0</div>
+    </div>
+    <div id="game-over-screen" style="display: none;">
         <h1>Game Over</h1>
-        <p id="finalScore"></p>
-        <button onclick="restartGame()">Reiniciar Partida</button>
+        <button id="restart-button">Restart</button>
     </div>
-    <canvas id="gameCanvas"></canvas>
-    <script src="arkanoid.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
