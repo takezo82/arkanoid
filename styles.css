@@ -9,6 +9,9 @@ body, html {
     justify-content: center;
     align-items: center;
     background-color: #f0f0f0;
+    background-image: url('unicorn_background.png');
+    background-size: cover;
+    background-position: center;
 }
 
 #gameContainer {
@@ -44,6 +47,10 @@ body, html {
 #scoreContainer {
     margin-top: 20px;
     font-size: 20px;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
 }
 
 #messageContainer {
@@ -52,6 +59,10 @@ body, html {
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 #messageContainer h1 {

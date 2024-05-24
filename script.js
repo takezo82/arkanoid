@@ -7,8 +7,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const triangleScoreElement = document.getElementById("triangleScore");
     const messageContainer = document.getElementById("messageContainer");
     const loveVideo = document.getElementById("loveVideo");
+    const backgroundMusic = document.getElementById("backgroundMusic");
     let squareScore = 0;
     let triangleScore = 0;
+    let speed = 1000; // Initial speed (in milliseconds)
 
     function moveElement(element) {
         const maxX = gameContainer.clientWidth - element.clientWidth;
@@ -22,12 +24,14 @@ document.addEventListener("DOMContentLoaded", function() {
     function increaseSquareScore() {
         squareScore++;
         squareScoreElement.textContent = squareScore;
+        increaseSpeed();
         checkScores();
     }
 
     function increaseTriangleScore() {
         triangleScore++;
         triangleScoreElement.textContent = triangleScore;
+        increaseSpeed();
         checkScores();
     }
 
@@ -42,7 +46,21 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("scoreContainer").style.display = "none";
             messageContainer.style.display = "flex";
             loveVideo.play();
+            backgroundMusic.play();
         }
+    }
+
+    function increaseSpeed() {
+        if (speed > 200) { // Prevent the speed from getting too fast
+            speed -= 50; // Increase the speed by decreasing the interval
+            clearInterval(movementInterval);
+            movementInterval = setInterval(moveAllElements, speed);
+        }
+    }
+
+    function moveAllElements() {
+        moveElement(square);
+        moveElement(triangle);
     }
 
     // Click events
@@ -69,8 +87,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     startGame();
-    setInterval(() => {
-        moveElement(square);
-        moveElement(triangle);
-    }, 1000);
+    let movementInterval = setInterval(moveAllElements, speed);
 });
