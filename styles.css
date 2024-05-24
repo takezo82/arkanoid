@@ -20,7 +20,7 @@ body, html {
     border: 2px solid #000;
     position: relative;
     overflow: hidden;
-    touch-action: none; /* Improves touch response */
+    touch-action: none; /* Mejora la respuesta táctil */
 }
 
 #square, #triangle {
@@ -68,4 +68,27 @@ body, html {
 #messageContainer h1 {
     font-size: 36px;
     margin-bottom: 20px;
+}
+
+#creditsContainer {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#creditsContainer h1 {
+    font-size: 24px;
+}
+
+#startButton {
+    font-size: 20px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
 }

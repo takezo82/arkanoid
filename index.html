@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +8,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="gameContainer">
+    <button id="startButton">Activar Sonido y Comenzar Juego</button>
+    <div id="gameContainer" style="display:none;">
         <div id="square"></div>
         <div id="triangle"></div>
     </div>
-    <div id="scoreContainer">
+    <div id="scoreContainer" style="display:none;">
         <div>% Homo Abra: <span id="squareScore">0</span>%</div>
         <div>% Homo Dani: <span id="triangleScore">0</span>%</div>
+        <div>Puntuación Total: <span id="totalScore">0</span></div>
     </div>
-    <div id="messageContainer">
+    <div id="messageContainer" style="display:none;">
         <h1>Gracias por jugar "Love is in Planeta!!!</h1>
         <video id="loveVideo" width="420" height="340" controls>
             <source src="Video de WhatsApp 2024-05-22 a las 14.26.05_3420ffe5.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+            Tu navegador no soporta la etiqueta de video.
         </video>
     </div>
+    <div id="creditsContainer" style="display:none;">
+        <h1>Porque lo mejor de la vida es el amor sea hetero o homo u otro.<br>Por muchos más momentos como este.<br>Dani H.</h1>
+    </div>
     <audio id="backgroundMusic" loop>
-        <source src="love_song.mid" type="audio/midi">
-        Your browser does not support the audio element.
+        <source src="wedding-story-110487.mp3" type="audio/mpeg">
+        Tu navegador no soporta la etiqueta de audio.
     </audio>
     <script src="script.js"></script>
 </body>
