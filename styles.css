@@ -1,3 +1,4 @@
+
 body, html {
     margin: 0;
     padding: 0;
@@ -16,7 +17,7 @@ body, html {
     border: 2px solid #000;
     position: relative;
     overflow: hidden;
-    touch-action: none; /* Desactiva el comportamiento predeterminado del navegador para mejorar la respuesta táctil */
+    touch-action: none; /* Improves touch response */
 }
 
 #square, #triangle {
@@ -25,20 +26,35 @@ body, html {
 }
 
 #square {
-    width: 50px;
-    height: 50px;
-    background-color: red;
+    width: 150px;
+    height: 204px;
+    background-image: url('square_image.png');
+    background-size: cover;
+    background-position: center;
 }
 
 #triangle {
-    width: 0;
-    height: 0;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-bottom: 50px solid blue;
+    width: 150px;
+    height: 259px;
+    background-image: url('triangle_image.png');
+    background-size: cover;
+    background-position: center;
 }
 
 #scoreContainer {
     margin-top: 20px;
     font-size: 20px;
+}
+
+#messageContainer {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#messageContainer h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
 }

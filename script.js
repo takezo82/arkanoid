@@ -1,9 +1,12 @@
+
 document.addEventListener("DOMContentLoaded", function() {
     const square = document.getElementById("square");
     const triangle = document.getElementById("triangle");
     const gameContainer = document.getElementById("gameContainer");
     const squareScoreElement = document.getElementById("squareScore");
     const triangleScoreElement = document.getElementById("triangleScore");
+    const messageContainer = document.getElementById("messageContainer");
+    const loveVideo = document.getElementById("loveVideo");
     let squareScore = 0;
     let triangleScore = 0;
 
@@ -19,11 +22,13 @@ document.addEventListener("DOMContentLoaded", function() {
     function increaseSquareScore() {
         squareScore++;
         squareScoreElement.textContent = squareScore;
+        checkScores();
     }
 
     function increaseTriangleScore() {
         triangleScore++;
         triangleScoreElement.textContent = triangleScore;
+        checkScores();
     }
 
     function handleElementClick(element, increaseScoreFunction) {
@@ -31,7 +36,16 @@ document.addEventListener("DOMContentLoaded", function() {
         moveElement(element);
     }
 
-    // Eventos de clic
+    function checkScores() {
+        if (squareScore >= 10 && triangleScore >= 10) {
+            gameContainer.style.display = "none";
+            document.getElementById("scoreContainer").style.display = "none";
+            messageContainer.style.display = "flex";
+            loveVideo.play();
+        }
+    }
+
+    // Click events
     square.addEventListener("click", function() {
         handleElementClick(square, increaseSquareScore);
     });
@@ -40,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
         handleElementClick(triangle, increaseTriangleScore);
     });
 
-    // Eventos táctiles
+    // Touch events
     square.addEventListener("touchstart", function() {
         handleElementClick(square, increaseSquareScore);
     });
